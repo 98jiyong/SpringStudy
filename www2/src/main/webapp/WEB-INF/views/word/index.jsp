@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>단어 검색</title>
 </head>
 <body>
 	<h2>Jiyong's 과일가게</h2>

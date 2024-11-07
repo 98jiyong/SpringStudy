@@ -4,12 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>단어 결과</title>
 </head>
 <body>
 <h1>단어 결과</h1>
 <hr>
-
 <p>${eng}의 뜻은 ${kor} </p>
 
 <form action="word" method="get">

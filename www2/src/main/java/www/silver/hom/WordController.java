@@ -1,6 +1,6 @@
 package www.silver.hom;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class WordController {
-	HashMap<String, String> word = new HashMap<String, String>();
+	LinkedHashMap<String, String> word = new LinkedHashMap<String, String>();
 	
 	@RequestMapping(value = "word", method = RequestMethod.GET)
 	public String aaa(Model model) {
@@ -25,16 +25,21 @@ public class WordController {
 	
 	@RequestMapping(value = "result", method = RequestMethod.POST)
 	public String bbb(@RequestParam ("fruit") String fruit, Model model) {
-		String a = fruit;
+		String question = fruit;
+		String answer = null;
+		int cnt = 0;
 		for(String key : word.keySet()) {
-			if(a.equals(key)) {				
+			if(question.equals(key)) {				
 //				System.out.println(key + "=" + word.get(key));
-				model.addAttribute("eng", a);
-				model.addAttribute("kor", word.get(key));
+				answer = word.get(key);			
+				cnt++;
 			}
 		}
-		model.addAttribute("eng",a);
-		model.addAttribute("kor","저도 잘 모르겠습니다.");
+		if(cnt == 0) {
+			answer = "저도 잘 모르겠습니다...";			
+		}
+		model.addAttribute("eng",question);
+		model.addAttribute("kor",answer);
 		return "word/result";
 	}
 }
