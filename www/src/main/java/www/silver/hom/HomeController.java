@@ -10,13 +10,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 /** aaa
  * Handles requests for the application home page.
  */
 @Controller
-// Å¬¶óÀÌ¾ðÆ® ¿äÃ» Ã³¸®´Â ÄÁÆ®·Ñ·¯°¡ ÇÑ´Ù.
-// ÄÁÆ®·Ñ·¯´Â @Controller¸¦ ºÙ¿© »ç¿ëÇÑ´Ù.
+// Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ® ï¿½ï¿½Ã» Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½Ñ·ï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½.
+// ï¿½ï¿½Æ®ï¿½Ñ·ï¿½ï¿½ï¿½ @Controllerï¿½ï¿½ ï¿½Ù¿ï¿½ ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -25,7 +27,7 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	// value°ªÀÎ /¸¦ ¹Þ¾Æ ½ÇÇà
+	// valueï¿½ï¿½ï¿½ï¿½ /ï¿½ï¿½ ï¿½Þ¾ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
@@ -37,7 +39,7 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "home";
-		// ¸®ÅÏ Å¸ÀÔÀº .jspÀÌ¸ç »ç¿ëÇÒ¶© ÆÄÀÏ¸í¸¸ ¾´´Ù.
+		// ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ .jspï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½Ò¶ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½.
 	}
 	
 	@RequestMapping(value = "timeline", method = RequestMethod.GET)
@@ -46,7 +48,22 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "viewMessage", method = RequestMethod.GET)
-	public String viewMessage() {
+	public String viewMessage(@RequestParam("time") String time, @RequestParam("name") String name,
+			Model model) {
+		System.out.println(time + "/" + name);
+		model.addAttribute("ë³€ìˆ˜ëª…","ê°’");
+		model.addAttribute("time",time);
+		model.addAttribute("name",name);
+		return "viewMsg";
+	}
+	
+	@RequestMapping(value = "viewMessage", method = RequestMethod.POST)
+	public String viewMessage1(@RequestParam("time") String time, @RequestParam("name") String name,
+			Model model) {
+		System.out.println(time + "/" + name);
+		model.addAttribute("ë³€ìˆ˜ëª…","ê°’");
+		model.addAttribute("time",time);
+		model.addAttribute("name",name);
 		return "viewMsg";
 	}
 	

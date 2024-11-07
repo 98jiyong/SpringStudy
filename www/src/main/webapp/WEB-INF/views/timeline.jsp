@@ -16,6 +16,11 @@
 	<h1>오후 일정</h1>
 	<hr>
 	<p>5시 30분까지 숨도 쉬지말고 화장실도 가지말고 잠도 자면 안되고. 브롤하기</p>
-	<a href="<%=request.getContextPath()%>/viewMessage">[시간표 보기]</a>
+	<a href="<%=request.getContextPath()%>/viewMessage?time=4&name=human">[시간표 보기]</a><br>
+	<form action="viewMessage" method="post">
+		<input type="text" name="name"><br>
+		<input type="text" name="time"><br>
+		<input type="submit" value="전송">
+	</form>
 </body>
 </html>
