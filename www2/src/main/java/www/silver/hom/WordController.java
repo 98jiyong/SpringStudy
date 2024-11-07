@@ -27,15 +27,15 @@ public class WordController {
 	public String bbb(@RequestParam ("fruit") String fruit, Model model) {
 		String question = fruit;
 		String answer = null;
-		int cnt = 0;
+		boolean flag = true;
 		for(String key : word.keySet()) {
 			if(question.equals(key)) {				
 //				System.out.println(key + "=" + word.get(key));
 				answer = word.get(key);			
-				cnt++;
+				flag = false;
 			}
 		}
-		if(cnt == 0) {
+		if(flag) {
 			answer = "저도 잘 모르겠습니다...";			
 		}
 		model.addAttribute("eng",question);
