@@ -561,6 +561,7 @@
     김티처 tel. 010-9407-8767
   </div>
   <!-- Modal -->
+  <form action="join" method="post">
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -572,31 +573,32 @@
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">ID</span>
             <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-              aria-describedby="basic-addon1">
+              aria-describedby="basic-addon1" name="id">
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">PASS</span>
             <input type="text" class="form-control" placeholder="Pass" aria-label="Username"
-              aria-describedby="basic-addon1">
+              aria-describedby="basic-addon1" name="pass">
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">TEL</span>
             <input type="text" class="form-control" placeholder="tel" aria-label="Username"
-              aria-describedby="basic-addon1">
+              aria-describedby="basic-addon1" name="tel">
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">EMAIL</span>
             <input type="text" class="form-control" placeholder="E-mail" aria-label="Username"
-              aria-describedby="basic-addon1">
+              aria-describedby="basic-addon1" name="email">
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Save</button>
+          <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Save</button>
           <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
         </div>
       </div>
     </div>
   </div>
+  </form>
   <div>
     <!-- Modal -->
     <!-- Modal -->
