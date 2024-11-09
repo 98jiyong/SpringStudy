@@ -5,8 +5,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="www.silver.dao.IF_MemberDao">
 
 	<!-- parameter Type은 쿼리문의 ?부분의 정보 -->
-	<insert id="insertOne" parameterType="www.silver.vo.MemberVO">
-		insert into kmember values (#{id}, #{pass}, #{tel}, #{email})
+	<insert id="insertOne" parameterType="www.silver.vo.MemberVO1">
+		insert into hmember values (#{id}, #{pw})
 	</insert>
 	
 	

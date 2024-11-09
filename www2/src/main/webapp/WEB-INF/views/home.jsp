@@ -106,7 +106,7 @@
     </div>
   </section>
   <aside>
-    <form action="#" method="get" class="mt-5 me-5">
+    <form action="sign" method="post" class="mt-5 me-5">
       <div class="my-3">
         <label for="uid" class="form-label">아이디:</label>
         <input type="text" class="form-control" name="id" id="uid" placeholder="Input id">
