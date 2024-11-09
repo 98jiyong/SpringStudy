@@ -109,11 +109,11 @@
     <form action="#" method="get" class="mt-5 me-5">
       <div class="my-3">
         <label for="uid" class="form-label">아이디:</label>
-        <input type="text" class="form-control" name="uid" id="uid" placeholder="Input user-id">
+        <input type="text" class="form-control" name="id" id="uid" placeholder="Input id">
       </div>
       <div class="my-3">
         <label for="pwd" class="form-label">비밀번호:</label>
-        <input type="password" class="form-control" name="pwd" id="pwd" placeholder="Input password">
+        <input type="password" class="form-control" name="pw" id="pwd" placeholder="Input password">
       </div>
       <div class="form-check my-3">
         <label class="form-check-label">
