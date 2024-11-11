@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -306,7 +306,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="board">게시판</a>
+              <a class="nav-link active" aria-current="page" href="./bbs.html">게시판</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">뉴스</a>
@@ -428,58 +428,67 @@
       </div>
     </div>
     <div id="mainsection_01">
+      <br>
       <div>
-        <div id="carouselExampleCaptions" class="carousel slide">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-              aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-              aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-              aria-label="Slide 3"></button>
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="card-title">Java / DataBase 기록 남기기</h5>
           </div>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="<%=request.getContextPath() %>/resources/img/indexmain.jpg" class="d-block w-100" alt="...">
-              <div class="carousel-caption d-none d-md-block">
-                <h5>올바른 개발자 </h5>
-                <p>첫 시작은 올바르게</p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img src="<%=request.getContextPath() %>/resources/img/java.PNG" class="d-block w-100" alt="...">
-              <div class="carousel-caption d-none d-md-block">
-                <h5>Second slide label</h5>
-                <p>Some representative placeholder content for the second slide.</p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img src="<%=request.getContextPath() %>/resources/img/js.PNG" class="d-block w-100" alt="...">
-              <div class="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>Some representative placeholder content for the third slide.</p>
-              </div>
-            </div>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
         </div>
       </div>
 
+      <form class="row g-3" action="bwrdo" method="post">
+        <div class="col-md-4">
+          <label for="inputState" class="form-label">놀이터 선택</label>
+          <select id="inputState" class="form-select" name="type">
+            <option selected>Database</option>
+            <option>Java</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label for="inputCity" class="form-label">작성자</label>
+          <input type="text" class="form-control" id="inputCity" name="username">
+        </div>
+        <div class="col-md-3">
+          <label for="inputPassword4" class="form-label">Password</label>
+          <input type="password" class="form-control" id="inputPassword4" name="pass">
+        </div>
+        <div class="col-12">
+          <label for="inputAddress" class="form-label">제목</label>
+          <input type="text" class="form-control" id="inputAddress" placeholder="제목을 입력하세요" name="title">
+        </div>
+
+
+        <div class="form-floating">
+          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+            style="height: 200px" name="content"></textarea>
+          <label for="floatingTextarea2">Comments</label>
+        </div>
+        <div class="mb-3">
+          <input class="form-control" type="file" id="formFile">
+          <input class="form-control" type="file" id="formFile">
+        </div>
+
+        <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck" name="viewmember" value=1>
+            <label class="form-check-label" for="gridCheck">
+              회원만 보기
+            </label>
+          </div>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">저장하기</button>
+        </div>
+      </form>
     </div>
+
+  </div>
   </div>
   <div id="asidelogin">
     <div id="loginbox">
       <div id="loginup">
-        KimTeacher Laps에 참여하세요
+        KimTeacher Lap에 참여하세요
       </div>
       <div id="login" data-bs-toggle="modal" data-bs-target="#loginModal">
         KimTeacher 로그인
@@ -527,41 +536,11 @@
 
     </div>
   </div>
-
-  <div id="infosection">
-    <div class="infosetion_card">
-      <h3> Java </h3>
-      <hr>
-      <p> 객체지향언어 자바는 프로그래밍 실력향상에 좋은 언어이다</p>
-    </div>
-    <div class="infosetion_card">
-      <h3> Spring </h3>
-      <hr>
-      <p> 웹개발에서 Spring은 필수적인 요소이다. 프레임워크를 구성을 이해하자</p>
-    </div>
-    <div class="infosetion_card">
-      <h3> JavaScript</h3>
-      <hr>
-      <p>자바스크립트는 html 태그를 선택하여 동적인 효과를 가져다 주며 반응형 웹에서 많이 사용한다.</p>
-    </div>
-    <div class="infosetion_card">
-      <h3> JavaScript</h3>
-      <hr>
-      <p>자바스크립트는 html 태그를 선택하여 동적인 효과를 가져다 주며 반응형 웹에서 많이 사용한다.</p>
-    </div>
-    <div class="infosetion_card">
-      <h3> JavaScript</h3>
-      <hr>
-      <p>자바스크립트는 html 태그를 선택하여 동적인 효과를 가져다 주며 반응형 웹에서 많이 사용한다.</p>
-    </div>
-
-  </div>
   <div id="footer">
     <hr>
     김티처 tel. 010-9407-8767
   </div>
   <!-- Modal -->
-  <form action="join" method="post">
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -573,32 +552,31 @@
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">ID</span>
             <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-              aria-describedby="basic-addon1" name="id">
+              aria-describedby="basic-addon1">
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">PASS</span>
             <input type="text" class="form-control" placeholder="Pass" aria-label="Username"
-              aria-describedby="basic-addon1" name="pass">
+              aria-describedby="basic-addon1">
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">TEL</span>
             <input type="text" class="form-control" placeholder="tel" aria-label="Username"
-              aria-describedby="basic-addon1" name="tel">
+              aria-describedby="basic-addon1">
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">EMAIL</span>
             <input type="text" class="form-control" placeholder="E-mail" aria-label="Username"
-              aria-describedby="basic-addon1" name="email">
+              aria-describedby="basic-addon1">
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Save</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Save</button>
           <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
         </div>
       </div>
     </div>
   </div>
-  </form>
   <div>
     <!-- Modal -->
     <!-- Modal -->
