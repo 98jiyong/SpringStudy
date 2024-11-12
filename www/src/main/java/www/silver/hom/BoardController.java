@@ -1,8 +1,11 @@
 package www.silver.hom;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +19,11 @@ public class BoardController {
 	IF_BoardService boardservice;
 	
 	@GetMapping("board")
-	public String board() throws Exception{
+	public String board(Model model) throws Exception{
+		List<BoardVO> list = boardservice.boardList();
+		// 리턴받은 list변수의 값을 모델 객체로 뷰에게 전송하는 코드
+		model.addAttribute("list",list);
+		// 뷰를 지정
 		return "board/bbs";
 	}
 	
@@ -30,6 +37,6 @@ public class BoardController {
 //		System.out.println(boardvo.toString());
 		// 컨트롤러는 클라이언트가 요청한 정보를 vo에 저장하고 서비스로 보내주는 역할
 		boardservice.addBoard(boardvo);
-		return "board/bbs";
+		return "redirect:board";
 	}
 }

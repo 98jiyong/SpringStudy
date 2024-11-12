@@ -1,5 +1,7 @@
 package www.silver.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -18,6 +20,12 @@ public class BoardDaoImpl implements IF_BoardDao{
 		// TODO Auto-generated method stub
 		sqlsession.insert(mapperQuery + ".inin", boardvo);
 		
+	}
+
+	@Override
+	public List<BoardVO> selectAll() throws Exception {
+		// TODO Auto-generated method stub
+		return 	sqlsession.selectList(mapperQuery + ".selectall");
 	}
 
 }

@@ -9,6 +9,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into kboard values (#{type}, #{username}, #{pass}, #{title}, #{content}, #{viewmember}, sysdate)
 	</insert>
 	
+	<select id="selectall" resultType="www.silver.vo.BoardVO">
+		select * from kboard
+	</select>
+	
 	
 </mapper>
 

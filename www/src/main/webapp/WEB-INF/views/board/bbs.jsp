@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page session="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -286,7 +287,7 @@
               <a class="nav-link active" aria-current="page" href="#"> </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./index.html">Home</a>
+              <a class="nav-link" href="<%=request.getContextPath()%>">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Lecture</a>
@@ -306,7 +307,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="./bbs.html">게시판</a>
+              <a class="nav-link active" aria-current="page" href="board">게시판</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">뉴스</a>
@@ -443,65 +444,91 @@
         <table class="table">
           <thead class="table-dark">
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
+              <th scope="col" width="5%">#</th>
+              <th scope="col" width="10%">Type</th>
+              <th scope="col" width="20%">Title</th>
+              <th scope="col" width="15%">사용자</th>
+              <th scope="col" width="20%">비밀글 여부</th>
+              <th scope="col" width="20%">날짜</th>
+              <th scope="col" width="10%">수정/삭제</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
-              <td>@twitter</td>
-            </tr>
+          
+<!--             <tr> -->
+<!--               <th scope="row">1</th> -->
+<!--               <td>Mark</td> -->
+<!--               <td>Otto</td> -->
+<!--               <td>@mdo</td> -->
+<!--               <td>@mdo</td> -->
+<!--               <td>@mdo</td> -->
+<!--               <td>수정/삭제</td> -->
+<!--             </tr> -->
+          
+          	<c:forEach items="${list}" var="list" varStatus="status">
+          		<tr>
+          			<th scope="row">${status.index}</th>
+          			<td>${list.type}</td>
+          			<td>${list.title}</td>
+          			<td>${list.username}</td>
+          			<td>${list.viewmember}</td>
+          			<td>${list.indate}
+          			<td>수정/삭제</td>
+          		</tr>
+          	</c:forEach>
+
+<!--             <tr> -->
+<!--               <th scope="row">1</th> -->
+<!--               <td>Mark</td> -->
+<!--               <td>Otto</td> -->
+<!--               <td>@mdo</td> -->
+<!--             </tr> -->
+<!--             <tr> -->
+<!--               <th scope="row">2</th> -->
+<!--               <td>Jacob</td> -->
+<!--               <td>Thornton</td> -->
+<!--               <td>@fat</td> -->
+<!--             </tr> -->
+<!--             <tr> -->
+<!--               <th scope="row">3</th> -->
+<!--               <td colspan="2">Larry the Bird</td> -->
+<!--               <td>@twitter</td> -->
+<!--             </tr> -->
+<!--             <tr> -->
+<!--               <th scope="row">3</th> -->
+<!--               <td colspan="2">Larry the Bird</td> -->
+<!--               <td>@twitter</td> -->
+<!--             </tr> -->
+<!--             <tr> -->
+<!--               <th scope="row">3</th> -->
+<!--               <td colspan="2">Larry the Bird</td> -->
+<!--               <td>@twitter</td> -->
+<!--             </tr> -->
+<!--             <tr> -->
+<!--               <th scope="row">3</th> -->
+<!--               <td colspan="2">Larry the Bird</td> -->
+<!--               <td>@twitter</td> -->
+<!--             </tr> -->
+<!--             <tr> -->
+<!--               <th scope="row">3</th> -->
+<!--               <td colspan="2">Larry the Bird</td> -->
+<!--               <td>@twitter</td> -->
+<!--             </tr> -->
+<!--             <tr> -->
+<!--               <th scope="row">3</th> -->
+<!--               <td colspan="2">Larry the Bird</td> -->
+<!--               <td>@twitter</td> -->
+<!--             </tr> -->
+<!--             <tr> -->
+<!--               <th scope="row">3</th> -->
+<!--               <td colspan="2">Larry the Bird</td> -->
+<!--               <td>@twitter</td> -->
+<!--             </tr> -->
+<!--             <tr> -->
+<!--               <th scope="row">3</th> -->
+<!--               <td colspan="2">Larry the Bird</td> -->
+<!--               <td>@twitter</td> -->
+<!--             </tr> -->
 
           </tbody>
         </table>
