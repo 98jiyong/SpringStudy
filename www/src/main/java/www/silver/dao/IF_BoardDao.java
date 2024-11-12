@@ -8,4 +8,5 @@ public interface IF_BoardDao {
 	
 	public void insertBoard(BoardVO boardvo) throws Exception;
 	public List<BoardVO> selectAll() throws Exception;
+	public void delete(String delt) throws Exception;
 }

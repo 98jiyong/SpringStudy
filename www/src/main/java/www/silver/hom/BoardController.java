@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import www.silver.service.IF_BoardService;
 import www.silver.vo.BoardVO;
@@ -30,6 +31,12 @@ public class BoardController {
 	@GetMapping("bwr")
 	public String bwr() throws Exception{
 		return "board/bbswr";
+	}
+	
+	@GetMapping("del")
+	public String bd(@RequestParam("deltitle") String delt) throws Exception {
+		boardservice.deleteBoard(delt);
+		return "redirect:board";
 	}
 	
 	@PostMapping("bwrdo")

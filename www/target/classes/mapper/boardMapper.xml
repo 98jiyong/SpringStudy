@@ -13,6 +13,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from kboard
 	</select>
 	
+	<delete id="delete" parameterType="String">
+		delete from kboard where title = #{delt}
+	</delete>
 	
 </mapper>
 

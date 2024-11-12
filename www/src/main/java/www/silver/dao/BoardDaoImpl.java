@@ -26,6 +26,13 @@ public class BoardDaoImpl implements IF_BoardDao{
 	public List<BoardVO> selectAll() throws Exception {
 		// TODO Auto-generated method stub
 		return 	sqlsession.selectList(mapperQuery + ".selectall");
+		
+	}
+
+	@Override
+	public void delete(String delt) throws Exception {
+		// TODO Auto-generated method stub
+		sqlsession.delete(mapperQuery + ".delete", delt);
 	}
 
 }

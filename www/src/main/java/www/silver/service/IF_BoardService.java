@@ -11,4 +11,5 @@ public interface IF_BoardService{
 	
 	// 서비스 정의 : 클라이언트가 요청한 전체목록보기 서비스를 정의 함.
 	public List<BoardVO> boardList() throws Exception;
+	public void deleteBoard(String delt) throws Exception;
 }

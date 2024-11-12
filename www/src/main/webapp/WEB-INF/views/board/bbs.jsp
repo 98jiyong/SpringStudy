@@ -450,7 +450,7 @@
               <th scope="col" width="15%">사용자</th>
               <th scope="col" width="20%">비밀글 여부</th>
               <th scope="col" width="20%">날짜</th>
-              <th scope="col" width="10%">수정/삭제</th>
+              <th scope="col" width="10%">수정  /  삭제</th>
             </tr>
           </thead>
           <tbody>
@@ -466,14 +466,15 @@
 <!--             </tr> -->
           
           	<c:forEach items="${list}" var="list" varStatus="status">
+          		<c:set var="date" value="${list.indate}"/>
           		<tr>
           			<th scope="row">${status.index}</th>
           			<td>${list.type}</td>
           			<td>${list.title}</td>
           			<td>${list.username}</td>
           			<td>${list.viewmember}</td>
-          			<td>${list.indate}
-          			<td>수정/삭제</td>
+          			<td>${fn:substring(date,0,10)}
+          			<td><a href="mod">수정</a>  /  <a href="del?deltitle=${list.title}">삭제</a></td>
           		</tr>
           	</c:forEach>
 

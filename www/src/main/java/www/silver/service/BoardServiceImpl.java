@@ -49,6 +49,12 @@ public class BoardServiceImpl implements IF_BoardService{
 		// 서버에서 서비스처리를 하지 않고 클라이언트에서 처리해보자
 		return boarddao.selectAll();
 	}
+
+	@Override
+	public void deleteBoard(String delt) throws Exception {
+		boarddao.delete(delt);
+		// TODO Auto-generated method stub
+	}
 	
 	
 }
