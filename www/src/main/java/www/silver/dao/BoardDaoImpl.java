@@ -17,22 +17,27 @@ public class BoardDaoImpl implements IF_BoardDao{
 	
 	@Override
 	public void insertBoard(BoardVO boardvo) {
-		// TODO Auto-generated method stub
 		sqlsession.insert(mapperQuery + ".inin", boardvo);
-		
 	}
 
 	@Override
 	public List<BoardVO> selectAll() throws Exception {
-		// TODO Auto-generated method stub
 		return 	sqlsession.selectList(mapperQuery + ".selectall");
-		
 	}
 
 	@Override
-	public void delete(String delt) throws Exception {
-		// TODO Auto-generated method stub
+	public void deleteBoard(String delt) throws Exception {
 		sqlsession.delete(mapperQuery + ".delete", delt);
+	}
+
+	@Override
+	public BoardVO selectOne(String modt) throws Exception {
+		return sqlsession.selectOne(mapperQuery + ".selectone", modt);
+	}
+
+	@Override
+	public void updateBoard(BoardVO boardvo) throws Exception {
+		sqlsession.update(mapperQuery + ".update", boardvo);
 	}
 
 }

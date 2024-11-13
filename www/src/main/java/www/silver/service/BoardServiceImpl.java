@@ -18,15 +18,7 @@ public class BoardServiceImpl implements IF_BoardService{
 	@Override
 	public void addBoard(BoardVO boardvo) throws Exception{
 		// TODO Auto-generated method stub
-		
-		String viewAuth = boardvo.getViewmember();
-		
-		if(viewAuth == null) {
-			boardvo.setViewmember("비공개");
-		}else{
-			boardvo.setViewmember("공개");
-		}			
-		
+		viewChange(boardvo);
 		// dao > mapper > DB insert
 		boarddao.insertBoard(boardvo);
 	}
@@ -52,9 +44,32 @@ public class BoardServiceImpl implements IF_BoardService{
 
 	@Override
 	public void deleteBoard(String delt) throws Exception {
-		boarddao.delete(delt);
+		boarddao.deleteBoard(delt);
 		// TODO Auto-generated method stub
 	}
+
+	@Override
+	public BoardVO modBoard(String modt) throws Exception {
+		return boarddao.selectOne(modt);
+	}
+
+	@Override
+	public void modBoard(BoardVO boardvo) throws Exception {
+		viewChange(boardvo);
+		boarddao.updateBoard(boardvo);
+		// TODO Auto-generated method stub
+		
+	}
 	
+	public void viewChange(BoardVO boardvo) {
+		
+		String viewAuth = boardvo.getViewmember();
+		
+		if(viewAuth == null) {
+			boardvo.setViewmember("공개");
+		}else{
+			boardvo.setViewmember("비공개");
+		}		
+	}
 	
 }

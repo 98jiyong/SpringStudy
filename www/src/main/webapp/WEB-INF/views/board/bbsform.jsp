@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page session="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -287,7 +286,7 @@
               <a class="nav-link active" aria-current="page" href="#"> </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<%=request.getContextPath()%>">Home</a>
+              <a class="nav-link" href="./index.html">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Lecture</a>
@@ -307,7 +306,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="board">게시판</a>
+              <a class="nav-link active" aria-current="page" href="./bbs.html">게시판</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">뉴스</a>
@@ -429,127 +428,73 @@
       </div>
     </div>
     <div id="mainsection_01">
-
+      <br>
       <div>
-        <div>
-          <div class="card text-center">
-            <div class="card-body">
-
-              <h5 class="card-title">게시판</h5>
-            </div>
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="card-title">게시글 수정</h5>
           </div>
         </div>
       </div>
-      <div id="article_table">
-        <table class="table">
-          <thead class="table-dark">
-            <tr>
-              <th scope="col" width="5%">#</th>
-              <th scope="col" width="10%">Type</th>
-              <th scope="col" width="20%">Title</th>
-              <th scope="col" width="15%">사용자</th>
-              <th scope="col" width="20%">비밀글 여부</th>
-              <th scope="col" width="20%">날짜</th>
-              <th scope="col" width="10%">수정  /  삭제</th>
-            </tr>
-          </thead>
-          <tbody>
-          
-<!--             <tr> -->
-<!--               <th scope="row">1</th> -->
-<!--               <td>Mark</td> -->
-<!--               <td>Otto</td> -->
-<!--               <td>@mdo</td> -->
-<!--               <td>@mdo</td> -->
-<!--               <td>@mdo</td> -->
-<!--               <td>수정/삭제</td> -->
-<!--             </tr> -->
-          
-          	<c:forEach items="${list}" var="list" varStatus="status">
-          		<c:set var="date" value="${list.indate}"/>
-          		<tr>
-          			<th scope="row">${status.count}</th>
-          			<td>${list.type}</td>
-          			<td>${list.title}</td>
-          			<td>${list.username}</td>
-          			<td>${list.viewmember}</td>
-          			<td>${fn:substring(date,0,10)}
-          			<td><a href="mod?modtitle=${list.title}">수정</a>  /  <a href="del?deltitle=${list.title}">삭제</a></td>
-          		</tr>
-          	</c:forEach>
 
-<!--             <tr> -->
-<!--               <th scope="row">1</th> -->
-<!--               <td>Mark</td> -->
-<!--               <td>Otto</td> -->
-<!--               <td>@mdo</td> -->
-<!--             </tr> -->
-<!--             <tr> -->
-<!--               <th scope="row">2</th> -->
-<!--               <td>Jacob</td> -->
-<!--               <td>Thornton</td> -->
-<!--               <td>@fat</td> -->
-<!--             </tr> -->
-<!--             <tr> -->
-<!--               <th scope="row">3</th> -->
-<!--               <td colspan="2">Larry the Bird</td> -->
-<!--               <td>@twitter</td> -->
-<!--             </tr> -->
-<!--             <tr> -->
-<!--               <th scope="row">3</th> -->
-<!--               <td colspan="2">Larry the Bird</td> -->
-<!--               <td>@twitter</td> -->
-<!--             </tr> -->
-<!--             <tr> -->
-<!--               <th scope="row">3</th> -->
-<!--               <td colspan="2">Larry the Bird</td> -->
-<!--               <td>@twitter</td> -->
-<!--             </tr> -->
-<!--             <tr> -->
-<!--               <th scope="row">3</th> -->
-<!--               <td colspan="2">Larry the Bird</td> -->
-<!--               <td>@twitter</td> -->
-<!--             </tr> -->
-<!--             <tr> -->
-<!--               <th scope="row">3</th> -->
-<!--               <td colspan="2">Larry the Bird</td> -->
-<!--               <td>@twitter</td> -->
-<!--             </tr> -->
-<!--             <tr> -->
-<!--               <th scope="row">3</th> -->
-<!--               <td colspan="2">Larry the Bird</td> -->
-<!--               <td>@twitter</td> -->
-<!--             </tr> -->
-<!--             <tr> -->
-<!--               <th scope="row">3</th> -->
-<!--               <td colspan="2">Larry the Bird</td> -->
-<!--               <td>@twitter</td> -->
-<!--             </tr> -->
-<!--             <tr> -->
-<!--               <th scope="row">3</th> -->
-<!--               <td colspan="2">Larry the Bird</td> -->
-<!--               <td>@twitter</td> -->
-<!--             </tr> -->
-
-          </tbody>
-        </table>
-        <div id="table_menu">
-          <a href="bwr">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-plus"
-            viewBox="0 0 16 16">
-            <path d="M8.5 6a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V10a.5.5 0 0 0 1 0V8.5H10a.5.5 0 0 0 0-1H8.5V6z" />
-            <path
-              d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
-          </svg>
-        </a>
+      <form class="row g-3" action="mod" method="post">
+        <div class="col-md-4">
+          <label for="inputState" class="form-label">놀이터 선택</label>
+          <select id="inputState" class="form-select" name="type">
+            <c:set var="type" value="${boardvo.type}"/> 
+            <option
+            <c:if test="${type eq 'Database'}">
+            selected
+            </c:if> 
+            >Database</option>
+            <option 
+            <c:if test="${type eq 'Java'}">
+            selected
+            </c:if>>Java</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label for="inputCity" class="form-label">작성자</label>
+          <input type="text" class="form-control" id="inputCity" name="username" value=${boardvo.username}>
+        </div>
+        <div class="col-md-3">
+          <label for="inputPassword4" class="form-label">Password</label>
+          <input type="password" class="form-control" id="inputPassword4" name="pass" value=${boardvo.pass}>
+        </div>
+        <div class="col-12">
+          <label for="inputAddress" class="form-label">제목</label>
+          <input type="text" class="form-control" id="inputAddress" placeholder="제목을 입력하세요" name="title" value=${boardvo.title} readonly="readonly">
         </div>
 
-      </div>
+
+        <div class="form-floating">
+          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+            style="height: 200px" name="content">${boardvo.content}</textarea>
+          <label for="floatingTextarea2">Comments</label>
+        </div>
+        <div class="mb-3">
+          <input class="form-control" type="file" id="formFile">
+          <input class="form-control" type="file" id="formFile">
+        </div>
+
+        <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck" name="viewmember" value=1
+            <c:if test="${boardvo.viewmember eq '비공개'}">checked</c:if>
+            >
+            <label class="form-check-label" for="gridCheck">
+              	회원만 보기
+            </label>
+          </div>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">수정하기</button>
+        </div>
+      </form>
     </div>
+
   </div>
-
-
-
+  </div>
   <div id="asidelogin">
     <div id="loginbox">
       <div id="loginup">
@@ -601,8 +546,6 @@
 
     </div>
   </div>
-
-
   <div id="footer">
     <hr>
     김티처 tel. 010-9407-8767

@@ -13,9 +13,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from kboard
 	</select>
 	
+	<select id="selectone" resultType="www.silver.vo.BoardVO" parameterType="String">
+		select * from kboard where title = #{modt}
+	</select>
+	
 	<delete id="delete" parameterType="String">
 		delete from kboard where title = #{delt}
 	</delete>
 	
+	<update id="update" parameterType="www.silver.vo.BoardVO">
+		update kboard set type=#{type}, username=#{username}, content=#{content}, viewmember=#{viewmember} where title=#{title}
+	</update>
 </mapper>
 

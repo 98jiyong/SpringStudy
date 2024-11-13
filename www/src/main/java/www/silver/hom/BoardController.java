@@ -19,24 +19,10 @@ public class BoardController {
 	@Inject
 	IF_BoardService boardservice;
 	
-	@GetMapping("board")
-	public String board(Model model) throws Exception{
-		List<BoardVO> list = boardservice.boardList();
-		// 리턴받은 list변수의 값을 모델 객체로 뷰에게 전송하는 코드
-		model.addAttribute("list",list);
-		// 뷰를 지정
-		return "board/bbs";
-	}
 	
 	@GetMapping("bwr")
 	public String bwr() throws Exception{
 		return "board/bbswr";
-	}
-	
-	@GetMapping("del")
-	public String bd(@RequestParam("deltitle") String delt) throws Exception {
-		boardservice.deleteBoard(delt);
-		return "redirect:board";
 	}
 	
 	@PostMapping("bwrdo")
@@ -46,4 +32,41 @@ public class BoardController {
 		boardservice.addBoard(boardvo);
 		return "redirect:board";
 	}
+	
+	@GetMapping("board")
+	public String board(Model model) throws Exception{
+		List<BoardVO> list = boardservice.boardList();
+		// 리턴받은 list변수의 값을 모델 객체로 뷰에게 전송하는 코드
+		model.addAttribute("list",list);
+		// 뷰를 지정
+		return "board/bbs";
+	}
+
+	@GetMapping("mod")
+	public String bm(@RequestParam("modtitle") String modt, Model model) throws Exception {
+		BoardVO bvo = boardservice.modBoard(modt);
+//		System.out.println(bvo.getTitle());
+//		 sysout은 서버 입장에서는 부하 걸리는 작업이다.
+//		그래서 테스트 했다면 삭제하거나 주석처리를 해야 한다.
+//		실제로 sysout은 잘 사용하지 않는다.
+//		테스트 하기 위해서는 junit test라는 도구를 사용한다.
+//		또 기록을 남기기 위해서는 로그라는 기능을 사용한다.
+//		로그는 홈 컨트롤러에 가면 볼 수 있다.
+		model.addAttribute("boardvo", bvo);
+		return "board/bbsform";
+	}
+	
+	@PostMapping("mod")
+	public String bu(@ModelAttribute BoardVO boardvo) throws Exception {
+		boardservice.modBoard(boardvo);
+		return "redirect:board";
+	}
+	
+	@GetMapping("del")
+	public String bd(@RequestParam("deltitle") String delt) throws Exception {
+		boardservice.deleteBoard(delt);
+		return "redirect:board";
+	}
+	
+	
 }
