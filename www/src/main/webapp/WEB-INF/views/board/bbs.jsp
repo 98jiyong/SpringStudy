@@ -477,6 +477,21 @@
           			<td><a href="mod?modtitle=${list.title}">수정</a>  /  <a href="del?deltitle=${list.title}">삭제</a></td>
           		</tr>
           	</c:forEach>
+          	<tr>
+          		<td colspan=6>
+          		<c:if test="${pageVO.prev }">
+						<a href="board?page=${pageVO.startPage -1}">[이전페이지그룹] </a>
+					</c:if>
+				<!--  forEach   리스틀 순회,  아래처럼 시작과 끝을 지정하여 반복하는 사용것. -->			
+					<c:forEach begin="${pageVO.startPage}" end="${pageVO.endPage }" var="idx">
+						<c:if test="${pageVO.page == idx}">*</c:if>
+						<a href="board?page=${idx}">${idx}</a>					
+					</c:forEach>	
+					<c:if test="${pageVO.next }">
+						<a href="board?page=${pageVO.endPage + 1 }"> [다음페이지그룹]</a>
+					</c:if>	
+          		</td>
+          	</tr>
 
 <!--             <tr> -->
 <!--               <th scope="row">1</th> -->

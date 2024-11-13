@@ -19,6 +19,8 @@ title varchar2(20),
 content varchar2(20),
 viewmember varchar2(6),
 indate timestamp);
+--추가
+insert into kboard values ('Database','kkk','1234','spring','paging','공개',sysdate);
 -- 조회
 select * from kboard;
 -- 삭제

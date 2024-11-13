@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import www.silver.dao.IF_BoardDao;
 import www.silver.vo.BoardVO;
+import www.silver.vo.PageVO;
 
 @Service
 public class BoardServiceImpl implements IF_BoardService{
@@ -24,7 +25,7 @@ public class BoardServiceImpl implements IF_BoardService{
 	}
 
 	@Override
-	public List<BoardVO> boardList() throws Exception {
+	public List<BoardVO> boardList(PageVO pagevo) throws Exception {
 		// DB 처리작업이 필요
 		
 		// 날짜 데이터의 년-월-일 만 출력
@@ -39,7 +40,7 @@ public class BoardServiceImpl implements IF_BoardService{
 //			b.setIndate(date.substring(0,10));
 //		}
 		// 서버에서 서비스처리를 하지 않고 클라이언트에서 처리해보자
-		return boarddao.selectAll();
+		return boarddao.selectAll(pagevo);
 	}
 
 	@Override
@@ -70,6 +71,11 @@ public class BoardServiceImpl implements IF_BoardService{
 		}else{
 			boardvo.setViewmember("비공개");
 		}		
+	}
+
+	@Override
+	public int totalCountBoard() throws Exception {
+		return boarddao.cntBoard();
 	}
 	
 }

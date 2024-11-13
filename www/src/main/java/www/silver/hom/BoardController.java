@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import www.silver.service.IF_BoardService;
 import www.silver.vo.BoardVO;
+import www.silver.vo.PageVO;
 
 @Controller
 public class BoardController {
@@ -34,8 +35,16 @@ public class BoardController {
 	}
 	
 	@GetMapping("board")
-	public String board(Model model) throws Exception{
-		List<BoardVO> list = boardservice.boardList();
+	public String board(Model model, @ModelAttribute PageVO pagevo) throws Exception{
+		if(pagevo.getPage() == null) {
+			pagevo.setPage(1);
+		}
+		pagevo.setTotalCount(boardservice.totalCountBoard());
+//		System.out.println(pagevo.getStartNo());
+//		System.out.println(pagevo.getEndNo());
+//		System.out.println(pagevo.getStartPage());
+//		System.out.println(pagevo.getEndPage());
+		List<BoardVO> list = boardservice.boardList(pagevo);
 		// 리턴받은 list변수의 값을 모델 객체로 뷰에게 전송하는 코드
 		model.addAttribute("list",list);
 		// 뷰를 지정
