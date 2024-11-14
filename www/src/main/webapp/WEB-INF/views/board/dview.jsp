@@ -432,53 +432,40 @@
       <div>
         <div class="card text-center">
           <div class="card-body">
-            <h5 class="card-title">Java / DataBase 기록 남기기</h5>
+            <h5 class="card-title">자세히 보기</h5>
           </div>
         </div>
       </div>
 
-      <form class="row g-3" action="bwrdo" method="post" encType="multipart/form-data">
+      <form class="row g-3" action="" method="" encType="multipart/form-data">
         <div class="col-md-4">
           <label for="inputState" class="form-label">놀이터 선택</label>
-          <select id="inputState" class="form-select" name="type">
-            <option selected>Database</option>
-            <option>Java</option>
-          </select>
+          ${boardvo.type}
         </div>
         <div class="col-md-3">
           <label for="inputCity" class="form-label">작성자</label>
-          <input type="text" class="form-control" id="inputCity" name="username">
+          ${boardvo.username}
         </div>
         <div class="col-md-3">
-          <label for="inputPassword4" class="form-label">Password</label>
-          <input type="password" class="form-control" id="inputPassword4" name="pass">
         </div>
         <div class="col-12">
           <label for="inputAddress" class="form-label">제목</label>
-          <input type="text" class="form-control" id="inputAddress" placeholder="제목을 입력하세요" name="title">
+          ${boardvo.title}
         </div>
-
 
         <div class="form-floating">
-          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
-            style="height: 200px" name="content"></textarea>
-          <label for="floatingTextarea2">Comments</label>
+        	${boardvo.content}
         </div>
         <div class="mb-3">
-          <input class="form-control" type="file" name="file" id="formFile">
-          <input class="form-control" type="file" name="file" id="formFile">
         </div>
-
-        <div class="col-12">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck" name="viewmember" value=1>
-            <label class="form-check-label" for="gridCheck">
-              회원만 보기
-            </label>
-          </div>
+			<c:forEach items="${attachList }" var="fname">
+				<img src="download?filename=${fname }"/>
+				<a href="download?filename=${fname }">fname</a>
+			</c:forEach>
+		<div class="col-12">
         </div>
         <div class="col-12">
-          <button type="submit" class="btn btn-primary">저장하기</button>
+          <button type="button" class="btn btn-primary">저장하기</button>
         </div>
       </form>
     </div>

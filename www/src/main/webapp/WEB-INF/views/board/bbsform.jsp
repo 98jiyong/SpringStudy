@@ -488,6 +488,7 @@
           </div>
         </div>
         <div class="col-12">
+        	<input type="hidden" name="num" value="${boardvo.num }"/>
           <button type="submit" class="btn btn-primary">수정하기</button>
         </div>
       </form>

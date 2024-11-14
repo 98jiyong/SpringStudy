@@ -470,11 +470,11 @@
           		<tr>
           			<th scope="row">${status.count}</th>
           			<td>${list.type}</td>
-          			<td>${list.title}</td>
+          			<td><a href="view?num=${list.num}">${list.title}</a></td>
           			<td>${list.username}</td>
           			<td>${list.viewmember}</td>
           			<td>${fn:substring(date,0,10)}
-          			<td><a href="mod?modtitle=${list.title}">수정</a>  /  <a href="del?deltitle=${list.title}">삭제</a></td>
+          			<td><a href="mod?modtitle=${list.num}">수정</a>  /  <a href="del?deltitle=${list.num}">삭제</a></td>
           		</tr>
           	</c:forEach>
           	<tr>

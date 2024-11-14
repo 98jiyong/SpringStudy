@@ -10,6 +10,8 @@ public class BoardVO {
 	String content = null;
 	String viewmember = null;
 	String indate = null;
+	String[] filename = null;
+	String num = null;
 	
 	@Override
 	public String toString() {
@@ -42,6 +44,12 @@ public class BoardVO {
 	public String getIndate() {
 		return indate;
 	}
+	public String[] getFilename() {
+		return filename;
+	}
+	public String getNum() {
+		return num;
+	}
 
 	public void setType(String type) {
 		this.type = type;
@@ -67,5 +75,11 @@ public class BoardVO {
 
 	public void setIndate(String indate) {
 		this.indate = indate;
+	}
+	public void setFilename(String[] filename) {
+		this.filename = filename;
+	}
+	public void setNum(String num) {
+		this.num = num;
 	}
 }

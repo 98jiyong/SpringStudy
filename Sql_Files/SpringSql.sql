@@ -25,7 +25,13 @@ insert into kboard values ('Database','kkk','1234','spring','paging','공개',sysd
 select * from kboard;
 -- 삭제
 delete from kboard;
--- 테이블 삭제
+
+desc kboard;
+-- 2024.11.14
+alter table kboard add num int;
+create sequence kboard_seq;
+update kboard set num=kboard_seq.NEXTVAL;
+select * from kboard;
 
 -- www2
 create table hmember(

@@ -22,6 +22,16 @@ public class BoardServiceImpl implements IF_BoardService{
 		viewChange(boardvo);
 		// dao > mapper > DB insert
 		boarddao.insertBoard(boardvo);
+		// 첨부파일이 있다면 첨부파일을 kboard_attach로 저장해라
+		String[] fname = boardvo.getFilename();
+		if(fname.length > 0) {
+			for(int i=0; i<fname.length; i++) {
+				//kboard_attach 테이블 저장하는 코드
+				if(fname[i] != null) {					
+					boarddao.insertAttach(fname[i]);
+				}
+			}
+		}
 	}
 
 	@Override
@@ -77,5 +87,18 @@ public class BoardServiceImpl implements IF_BoardService{
 	public int totalCountBoard() throws Exception {
 		return boarddao.cntBoard();
 	}
+
+	@Override
+	public BoardVO getBoard(String num) throws Exception {
+		// TODO Auto-generated method stub
+		return boarddao.selectOne(num);
+	}
+
+	@Override
+	public List<String> getAttach(String num) throws Exception {
+		// TODO Auto-generated method stub
+		return boarddao.selectAllAttach(num);
+	}
+
 	
 }

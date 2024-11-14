@@ -6,7 +6,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- parameter Type은 쿼리문의 ?부분의 정보 -->
 	<insert id="inin" parameterType="www.silver.vo.BoardVO">
-		insert into kboard values (#{type}, #{username}, #{pass}, #{title}, #{content}, #{viewmember}, sysdate)
+		insert into kboard values (#{type}, #{username}, #{pass}, #{title}, #{content}, #{viewmember}, sysdate, kboard_seq.nextval)
+	</insert>
+	<insert id="insertattach">
+		insert into kboard_attach values((select max(num) from kboard),#{fanme},default)
 	</insert>
 	
 	<select id="selectall" parameterType="www.silver.vo.PageVO" resultType="www.silver.vo.BoardVO">
@@ -14,21 +17,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		kboard order by indate DESC) sub) t
 		where rnum between #{startNo} and #{endNo}
 	</select>
-	
+	<select id="selectattach" parameterType="String" resultType="String">
+		select filename from kboard_attach where num=#{num}
+	</select>
 	<select id="cntall" resultType="int">
 		select count(*) from kboard
 	</select>
 	
 	<select id="selectone" resultType="www.silver.vo.BoardVO" parameterType="String">
-		select * from kboard where title = #{modt}
+		select * from kboard where num = #{modt}
 	</select>
 	
 	<delete id="delete" parameterType="String">
-		delete from kboard where title = #{delt}
+		delete from kboard where num = #{delt}
 	</delete>
 	
 	<update id="update" parameterType="www.silver.vo.BoardVO">
-		update kboard set type=#{type}, username=#{username}, content=#{content}, viewmember=#{viewmember} where title=#{title}
+		update kboard set type=#{type}, username=#{username}, content=#{content}, viewmember=#{viewmember} where num=#{num}
 	</update>
 </mapper>
 

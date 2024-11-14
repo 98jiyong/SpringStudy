@@ -21,8 +21,16 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="www.silver.hom" />
+	<beans:bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id ="multipartResolver">
+		<beans:property name="maxUploadSize" value="10485760"></beans:property> <!--  10메가 제한 설정-->	
+	</beans:bean>
 	
+	<beans:bean class="java.lang.String" id="uploadPath">
+		<beans:constructor-arg value="c:\\tmp"></beans:constructor-arg>
+	</beans:bean>
+	
+	<context:component-scan base-package="www.silver.hom" />
+	<context:component-scan base-package="www.silver.util"/>
 	
 	
 </beans:beans>

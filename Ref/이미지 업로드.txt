@@ -1,0 +1,35 @@
+주제 : 파일 업로드
+필요한 spring 라이블러리 multipart
+
+클라이언트  
+- input type="file" name="file"
+- encType지정
+
+Spring
+- 라이브러리 설정 > pom.xml
+<!-- 파일업로드 라이브러리 -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+- 컨트롤러에서 파일이 정상으로 업로드 되는지 확인 
+  이때, servlet-context.xml 파일에
+   빈 설정이 되어야 정상적으로 첨부파일을 받을 수 있다.
+  
+   	<beans:bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id ="multipartResolver">
+		<beans:property name="maxUploadSize" value="10485760"></beans:property> <!--  10메가 제한 설정-->	
+	</beans:bean>
+
+
+- 이제는 컨트롤러에서 클라이언트로 받은 file을 fileDataUtil 객체에게
+매개변수로 전달하고, 파일명만 배열 타입으로 리턴 받는다.
+이렇게 되면, 지정된 위치에 첨부파일을 저장하게 되고
+이제는 리턴받는 변경된 파일명을 디비에 저장하는 작업을 하면 된다.
+
+- 컨트롤러는 FileDateUtil 객체가 필요하다.
+그래서 이 객체를 컨테이너로부터 주입받겠다.
+컨테이너로부터 주입 받으려면 fileDataUtil객체가 컨테이너에 있어야 하는데
+이를 위해서 @Controller를 작성하였고 Scan설정도 했다.
+
+- 리턴 받은 파일명을 디비에 저장하기 위해서 기존 BoardVO에 변수를 추가
