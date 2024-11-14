@@ -32,7 +32,13 @@ alter table kboard add num int;
 create sequence kboard_seq;
 update kboard set num=kboard_seq.NEXTVAL;
 select * from kboard;
+alter table kboard add primary key(num);
 
+create table kboard_attach(
+num int,
+filename varchar2(50),
+indate timestamp default sysdate);
+select * from kboard_attach;
 -- www2
 create table hmember(
 id varchar2(8) primary key,
