@@ -39,4 +39,5 @@
 	
 	<context:component-scan base-package="www.silver.service"/>
 	<context:component-scan base-package="www.silver.dao"/>
+
 </beans>

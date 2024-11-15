@@ -306,7 +306,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="./bbs.html">게시판</a>
+              <a class="nav-link active" aria-current="page" href="./board.html">게시판</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">뉴스</a>

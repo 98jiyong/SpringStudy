@@ -29,8 +29,20 @@
 		<beans:constructor-arg value="c:\\tmp"></beans:constructor-arg>
 	</beans:bean>
 	
+	<beans:bean id="authenInterceptor" class="www.silver.interceptor.AuthenticationInterceptor"/>
+	<interceptors>
+		<interceptor>
+			<mapping path="/**" />
+			<exclude-mapping path="/" />
+			<exclude-mapping path="/resources**" />
+			<exclude-mapping path="/board" />
+			<exclude-mapping path="/login" />
+			<beans:ref bean="authenInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
 	<context:component-scan base-package="www.silver.hom" />
 	<context:component-scan base-package="www.silver.util"/>
-	
+<!-- 	<context:component-scan base-package="www.silver.interceptor"/> -->
 	
 </beans:beans>
